@@ -8,6 +8,13 @@ $password="root";
 $connect = mysql_connect($host, $username, $password)
   or die (mysql_error());
 
+if(isset($_POST['submitted'])) { //if the user has submitted the form, store all the variables in the $_POST superglobal array.
+    $firstname=$_POST['firstname'];
+    $lastname=$_POST['lastname'];
+    $email=$_POST['email'];
+    $comments=$_POST['comments'];
+
+}
 // close the connection
 mysql_close($connect);
 ?>
@@ -23,7 +30,7 @@ mysql_close($connect);
  <section id="form">
         <h2>Contact me</h2>
         <p>Please fill out the form below.</p>
-        <form action="process.php" method="post">
+        <form action="#" method="post">
             <label>First Name</label>
             <input name="firstname" type="text" placeholder="First name" />
             <br>
@@ -43,7 +50,7 @@ mysql_close($connect);
     </section>
     <!-- #form -->
     <section id="thanks">
-        Thanks for your submission, [first_name]!
+        Thanks for your submission, <?php echo $firstname; ?>!
         <br>
         <table>
             <tr>
