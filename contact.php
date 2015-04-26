@@ -1,3 +1,18 @@
+<?php
+
+$host="localhost";
+$username="root";
+$password="root";
+
+// connect to database
+$connect = mysql_connect($host, $user, $password)
+  or die (mysql_error());
+
+// close the connection
+mysql_close($connect);
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
