@@ -5,7 +5,7 @@ $username="root";
 $password="root";
 
 // connect to database
-$connect = mysql_connect($host, $user, $password)
+$connect = mysql_connect($host, $username, $password)
   or die (mysql_error());
 
 // close the connection
