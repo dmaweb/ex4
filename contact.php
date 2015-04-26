@@ -57,6 +57,9 @@ mysql_close($connect);
         </form>
     </section>
     <!-- #form -->
+
+  <?php if(isset($_POST['submitted'])) { //only show the thank you message and the list of contacts AFTER the user submits their info.
+    //escape out of php ?>
     <section id="thanks">
         Thanks for your submission, <?php echo $firstname; /* display the user's first name */ ?>!
         <br>
@@ -70,5 +73,7 @@ mysql_close($connect);
             [loop through all the entries in the database and display as rows in the table]
         </table>
     </section>
+    <?php // go back into php to close out the if statement with a curly bracket
+    } ?>
 </body>
 </html>
