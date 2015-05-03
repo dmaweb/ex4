@@ -1,19 +1,20 @@
 <?php
 //assign credentials. These will work if you're using mamp and localhost. Change them to the credentials you used when you installed wordpress on your server
 $host="localhost";
-$username="root";
-$password="root";
+$username="dmaprof_wp";
+$password="123dma321";
 // connect to database
 $connect = mysql_connect($host, $username, $password)
 or die (mysql_error());
 //if the user has submitted the form, store all the variables in the $_POST superglobal array.
 if(isset($_POST['submitted'])) {
-$firstname=$_POST['firstname'];
-$lastname=$_POST['lastname'];
-$email=$_POST['email'];
-$comments=$_POST['comments'];
+$firstname=mysql_real_escape_string($_POST['firstname']);
+$lastname=mysql_real_escape_string($_POST['lastname']);
+$email=mysql_real_escape_string($_POST['email']);
+$comments=mysql_real_escape_string($_POST['comments']);
+
 //select the database to read from. If you created the contacts table in your wordpress DB, it's the same one you used when you set uop wordpress
-mysql_select_db("contacts", $connect)
+mysql_select_db("dmaprof_wp3", $connect)
 or die (mysql_error());
 //insert the submitted data into the database
 mysql_query ("INSERT into contacts (firstname, lastname, email, comments) VALUES ('$firstname', '$lastname', '$email', '$comments')", $connect)
@@ -76,10 +77,8 @@ or die (mysql_error());
             // echo the closing table row tag
             echo "</tr>";
             }
-
             // close the connection
             mysql_close($connect);
-
             ?>
         </table>
     </section>
